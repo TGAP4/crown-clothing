@@ -19,15 +19,31 @@
       color: black;
       border: 1px solid black;
     }
-
-    &.google-signed-in {
-      background-color: #4285f4;
-      color: white;
-
-      &:hover {
-        background-color: #286cda;
-        border: none;
-      }
-    }
 }
 
+.googleSignIn {
+  background-color: #4285f4;
+  color: white;
+
+  &:hover {
+    background-color: #286cda;
+    border: none;
+  }
+}
+
+.inverted {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  width: 80%;
+  opacity: 0.7;
+  position: absolute;
+  top: 255px;
+  display: none;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    border: none;
+  }
+}

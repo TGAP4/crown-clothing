@@ -52,7 +52,7 @@ class SignIn extends Component {
                     />
                     <div className='buttons'>
                         <CustomButton onClick={this.handleSubmit}>Sign in</CustomButton>
-                        <CustomButton onClick={signInWithGoogle} isGoogleSignedIn>
+                        <CustomButton onClick={signInWithGoogle} type='googleSignIn'>
                             Sign in with Google
                         </CustomButton>
                     </div>
