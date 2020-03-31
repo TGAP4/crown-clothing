@@ -2,7 +2,6 @@ import React from 'react';
 import './checkout-item.scss';
 
 import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
 import { clearItemFromCart, addItem, removeItem } from '../../redux/cart/cart-actions';
 
 const CheckoutItem = ({cartItem, addItem, removeItem, clearItem}) => {
