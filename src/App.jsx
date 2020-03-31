@@ -57,16 +57,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({user}) => {
-  return {
-    currentUser: user.currentUser
-  };
-}
+const mapStateToProps = ({user}) => ({
+  currentUser: user.currentUser
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setCurrentUser: user => dispatch(setCurrentUser(user))
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
