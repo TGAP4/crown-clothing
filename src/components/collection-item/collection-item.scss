@@ -1,10 +1,11 @@
 .collection-item {
-    width: 22%;
+    width: 22vw;
     display: flex;
     flex-direction: column;
     height: 350px;
     align-items: center;
     position: relative;
+    padding: 0 10px;
   
     &:hover {
       .image {
@@ -33,12 +34,12 @@
       font-size: 18px;
   
       .name {
-        width: 90%;
         margin-bottom: 15px;
       }
   
       .price {
-        width: 10%;
+        text-align: end;
+        padding-right: 2px;
       }
     }
 }
