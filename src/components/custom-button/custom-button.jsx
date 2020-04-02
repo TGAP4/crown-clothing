@@ -1,11 +1,11 @@
 import React from 'react';
-import './custom-button.scss';
+import * as S from './custom-button-styles';
 
 const CustomButton = ({children, type, ...rest}) => {
     return(
-        <div className={`${type} custom-button`} {...rest}>
+        <S.CustomButton type={type} {...rest}>
             {children}
-        </div>
+        </S.CustomButton>
     )
 }
 

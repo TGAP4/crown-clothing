@@ -17,7 +17,7 @@ export const selectCollection = collectionUrlParam => {
   return (
     createSelector(
       [selectShopCollections],
-      shopCollections => shopCollections[collectionUrlParam]
+      shopCollections => shopCollections[collectionUrlParam] || {items: []}
     )
   );
 };

@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import {auth, createUserProfileDocument} from './firebase/firebase';
+import {auth, createUserProfileDocument} from './firebase/firebase-utils';
 
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
@@ -17,7 +17,7 @@ import Header from './components/header/header';
 
 
 
-class App extends Component {
+class App extends React.Component {
 
   unsubscribeFromAuth = null;
 
@@ -29,8 +29,8 @@ class App extends Component {
         setTimeout(() => {
           createUserProfileDocument(userAuth).onSnapshot(snapShot => {
             setCurrentUser({
-                id: snapShot.id,
-                ...snapShot.data()
+              id: snapShot.id,
+              ...snapShot.data()
             })
           })
         }, 500);

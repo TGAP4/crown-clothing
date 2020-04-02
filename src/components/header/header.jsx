@@ -1,40 +1,43 @@
 import React from 'react';
-import './header.scss';
+import * as S from './header-styles';
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 import {Link} from 'react-router-dom';
-import {auth} from '../../firebase/firebase';
+import {auth} from '../../firebase/firebase-utils';
+
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
-import CartIcon from '../cart-icon/cart-icon';
-import CartDropdown from '../cart-dropdown/cart-dropdown';
 import {selectCartHidden} from '../../redux/cart/cart-selectors';
 import {selectCurrentUser} from '../../redux/user/user-selectors';
 
+import CartIcon from '../cart-icon/cart-icon';
+import CartDropdown from '../cart-dropdown/cart-dropdown';
+
+
 const Header = ({currentUser, hidden}) => {
     return (
-        <div className='header'>
-            <Link className='logo-container' to='/'>
+        <S.Header>
+            <S.LogoContainer to='/'>
                 <Logo className='logo' />
-            </Link>
-            <div className='options'>
-                <Link className='option' to='/shop'>
+            </S.LogoContainer>
+            <S.Options>
+                <S.Option as={Link} to='/shop'>
                     SHOP
-                </Link>
-                <Link className='option' to='/shop'>
+                </S.Option>
+                <S.Option as={Link} to='/contact'>
                     CONTACT
-                </Link>
+                </S.Option>
                 {
                     currentUser ?
-                    <div className='option' onClick={() => auth.signOut()}>
+                    <S.Option as={Link} onClick={() => auth.signOut()}>
                         SIGN OUT
-                    </div>
+                    </S.Option>
                     
-                    : <Link className='option' to='/signin'>SIGN IN</Link>
+                    : <S.Option as={Link} to='/signin'>SIGN IN</S.Option>
                 }
                 <CartIcon />
-            </div>
+            </S.Options>
             {hidden ? null : <CartDropdown />}
-        </div>
+        </S.Header>
     )
 }
 
