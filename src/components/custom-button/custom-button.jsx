@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './custom-button-styles';
 
-const CustomButton = ({children, type, ...rest}) => {
+const CustomButton = ({children, mod, ...rest}) => {
     return(
-        <S.CustomButton type={type} {...rest}>
+        <S.CustomButton mod={mod} {...rest}>
             {children}
         </S.CustomButton>
     )

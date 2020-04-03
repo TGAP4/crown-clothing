@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components';
 
-const getButtonStyle = ({type}) => {
-  switch (type) {
+const getButtonStyle = ({mod}) => {
+  switch (mod) {
     case 'inverted':
       return inverted;
     case 'googleSignIn':
