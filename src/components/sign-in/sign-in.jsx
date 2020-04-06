@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './sign-in.scss';
+import * as S from './sign-in-styles';
 
 import {connect} from 'react-redux';
 import {googleSignInStart, emailSignInStart} from '../../redux/user/user-actions';
@@ -27,8 +27,8 @@ const SignIn = ({googleSignInStart, emailSignInStart}) => {
   }
 
   return (
-    <div className='sign-in'>
-      <h2 className='title'>I already have an account</h2>
+    <S.SignIn>
+      <S.Title>I already have an account</S.Title>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput 
@@ -47,16 +47,16 @@ const SignIn = ({googleSignInStart, emailSignInStart}) => {
           label='Password'
           required 
         />
-        <div className='buttons'>
+        <S.Buttons>
           <CustomButton type='submit' onClick={handleSubmit}>
             Sign in
           </CustomButton>
           <CustomButton type='button' onClick={googleSignInStart} mod='googleSignIn'>
             Sign in with Google
           </CustomButton>
-        </div>
+        </S.Buttons>
       </form>
-    </div>
+    </S.SignIn>
   )
 };
 

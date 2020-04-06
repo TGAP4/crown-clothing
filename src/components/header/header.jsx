@@ -14,36 +14,35 @@ import CartDropdown from '../cart-dropdown/cart-dropdown';
 
 
 const Header = ({currentUser, hidden, signOutStart}) => {
-    return (
-        <S.Header>
-            <S.LogoContainer to='/'>
-                <Logo className='logo' />
-            </S.LogoContainer>
-            <S.Options>
-                <S.Option as={Link} to='/shop'>
-                    SHOP
-                </S.Option>
-                <S.Option as={Link} to='/contact'>
-                    CONTACT
-                </S.Option>
-                {
-                    currentUser ?
-                    <S.Option as={Link} to='/' onClick={signOutStart}>
-                        SIGN OUT
-                    </S.Option>
-                    
-                    : <S.Option as={Link} to='/signin'>SIGN IN</S.Option>
-                }
-                <CartIcon />
-            </S.Options>
-            {hidden ? null : <CartDropdown />}
-        </S.Header>
-    )
+  return (
+    <S.Header>
+      <S.LogoContainer as={Link} to='/'>
+        <Logo />
+      </S.LogoContainer>
+      <S.Options>
+        <S.Option as={Link} to='/shop'>
+          SHOP
+        </S.Option>
+        <S.Option as={Link} to='/contact'>
+          CONTACT
+        </S.Option>
+        {
+          currentUser ?
+          <S.Option as={Link} to='/' onClick={signOutStart}>
+            SIGN OUT
+          </S.Option>                  
+          : <S.Option as={Link} to='/signin'>SIGN IN</S.Option>
+        }
+        <CartIcon />
+      </S.Options>
+      {hidden ? null : <CartDropdown />}
+    </S.Header>
+  )
 }
 
 const mapStatetoProps = createStructuredSelector({
-    currentUser: selectCurrentUser, 
-    hidden: selectCartHidden
+  currentUser: selectCurrentUser, 
+  hidden: selectCartHidden
 });
 
 const mapDispatchToProps = dispatch => ({

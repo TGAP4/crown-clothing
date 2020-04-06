@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './sign-up.scss';
+import * as S from './sign-up-styles';
 
 import {connect} from 'react-redux';
 import {signUpStart} from '../../redux/user/user-actions';
@@ -35,10 +35,10 @@ const SignUp = ({signUpStart}) => {
 
 
   return (
-    <div className='sign-up'>
-      <h2 className='title'>I do not have an account</h2>
+    <S.SignUp>
+      <S.Title>I do not have an account</S.Title>
       <span>Sign up with with email and password</span>
-      <form className='sign-up-form' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <FormInput 
           type='text' 
           name='displayName' 
@@ -73,7 +73,7 @@ const SignUp = ({signUpStart}) => {
         />
         <CustomButton type='submit' onClick={handleSubmit}>SIGN UP</CustomButton>
       </form>
-    </div>
+    </S.SignUp>
   );
 };
 

@@ -1,32 +1,28 @@
 import React from 'react';
-import './collection.scss';
+import * as S from './collection-styles';
 
 import {connect} from 'react-redux';
-import {selectCollection, selectIsCollectionFetching} from '../../redux/shop/shop-selectors';
+import {selectCollection} from '../../redux/shop/shop-selectors';
 
 import CollectionItem from '../../components/collection-item/collection-item';
-import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
 
 
-const Collection = ({collection, isLoading}) => {
+const Collection = ({collection}) => {
   const {title, items} = collection;
   return (  
-    isLoading ? 
-    <LoadingSpinner />
-    : <div className='collection'>
-        <h2 className='title'>{title}</h2>
-        <div className='items'>
+    <S.Collection>
+        <S.Title>{title}</S.Title>
+        <S.Items>
           {items.map(item => 
           <CollectionItem key={item.id} item={item} />
           )}
-        </div>
-    </div>
+        </S.Items>
+    </S.Collection>
   )
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.match.params.collectionId)(state),
-  isLoading: selectIsCollectionFetching(state)
+  collection: selectCollection(ownProps.match.params.collectionId)(state)
 });
 
 export default connect(mapStateToProps)(Collection);

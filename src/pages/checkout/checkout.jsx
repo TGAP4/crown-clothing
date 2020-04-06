@@ -1,5 +1,5 @@
 import React from 'react';
-import './checkout.scss';
+import * as S from './checkout-styles'
 
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
@@ -10,37 +10,37 @@ import StripeButton from '../../components/stripe-button/stripe-buttons';
 
 const CheckoutPage = ({cartItems, cartTotal}) => {
   return (
-    <div className='checkout-page'>
-      <div className='checkout-header'>
-        <div className='header-block'>
+    <S.CheckoutPage>
+      <S.CheckoutHeader>
+        <S.HeaderBlock>
           <span>Product</span>
-        </div>
-        <div className='header-block'>
+        </S.HeaderBlock>
+        <S.HeaderBlock>
           <span>Description</span>
-        </div>
-        <div className='header-block'>
+        </S.HeaderBlock>
+        <S.HeaderBlock>
           <span>Quantity</span>
-        </div>
-        <div className='header-block'>
+        </S.HeaderBlock>
+        <S.HeaderBlock>
           <span>Price</span>
-        </div>
-        <div className='header-block'>
+        </S.HeaderBlock>
+        <S.HeaderBlock>
           <span>Remove</span>
-        </div>
-      </div>
+        </S.HeaderBlock>
+      </S.CheckoutHeader>
       {cartItems.map(cartItem => 
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       )}
-      <div className='total'>
+      <S.Total>
         <span>TOTAL: ${cartTotal}</span>
-      </div>
-      <div className='test-warning'>
+      </S.Total>
+      <S.TestWarning>
         *Please use the following test credit card for payments*
         <br />
         4242 4242 4242 4242 - Exp: 01/21 - CVV: 123
-      </div>
+      </S.TestWarning>
       <StripeButton price={cartTotal} />
-    </div>
+    </S.CheckoutPage>
   )
 }
 

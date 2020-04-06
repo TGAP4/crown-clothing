@@ -1,18 +1,18 @@
 import React from 'react';
-import './form-input.scss'
+import * as S from './form-input-styles';
 
 const FormInput = ({handleChange, label, value, ...rest}) => {
-    return (
-        <div className='group'>
-            <input className='form-input' onChange={handleChange} {...rest} />
-            {label ?
-                <label className={`${value.length ? 'shrink' : ''} form-input-label`}>
-                    {label}
-                </label>
-                : null
-            }
-        </div>
-    )
-}
+  return (
+    <S.Group>
+      <S.FormInput onChange={handleChange} {...rest} />
+      {label ?
+        <S.FormInputLabel value={value}>
+          {label}
+        </S.FormInputLabel>
+        : null
+      }
+    </S.Group>
+  );
+};
 
 export default FormInput;
