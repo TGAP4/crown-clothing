@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './cart-dropdown-styles';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
@@ -22,15 +22,11 @@ const CartDropdown = ({cartItems, history, dispatch}) => {
           : <S.EmptyMessage>Your cart is empty</S.EmptyMessage>
         }
       </S.CartItems>
-      <S.Button
-        as={CustomButton}
-        onClick={() => {
-          history.push('/checkout');
-          dispatch(toggleCartHidden());
-        }}
-      >
-        GO TO CHECKOUT
-      </S.Button>
+      <Link to={'/checkout'}>
+        <S.Button as={CustomButton} onClick={() => dispatch(toggleCartHidden())}>
+            GO TO CHECKOUT
+        </S.Button>
+      </Link>
     </S.CartDropdown>
   )
 }

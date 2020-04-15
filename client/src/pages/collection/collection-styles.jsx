@@ -8,7 +8,7 @@ export const Collection = styled.div`
 
 export const Title = styled.h2`
   font-size: 38px;
-  margin: 0 auto 30px;
+  margin: 20px auto 30px;
 
   @media screen and (max-width: 800px) {
     margin-bottom: 25px;

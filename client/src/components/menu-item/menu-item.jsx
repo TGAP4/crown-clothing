@@ -1,13 +1,14 @@
 import React from 'react';
 import * as S from './menu-item-styles';
 
-import { withRouter } from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 const MenuItem = ({title, imageUrl, size, linkUrl, history, match}) => {
   return (
     <S.MenuItem 
+      as={Link}
       size={size} 
-      onClick={() => history.push(`${match.url}${linkUrl}`)}
+      to={`${match.url}${linkUrl}`}
     >
       <S.BackgroundImage imageUrl={imageUrl} />
       <S.Content>

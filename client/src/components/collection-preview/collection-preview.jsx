@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './collection-preview-styles';
 
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 import CollectionItem from '../collection-item/collection-item';
 
@@ -9,7 +9,7 @@ const CollectionPreview = ({title, items, history, match}) => {
   return (
     <S.CollectionPreview>
       <S.Title 
-        onClick={() => history.push(`${match.path}/${title.toLowerCase()}`)}
+        as={Link} to={`${match.path}/${title.toLowerCase()}`}
       >
         {title.toUpperCase()}
       </S.Title>

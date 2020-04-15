@@ -12,6 +12,7 @@ export const CollectionPreview = styled.div`
 
 export const Title = styled.h1`
   font-size: 38px;
+  font-weight: 600;
   margin: 20px 0 25px 10px;
 
   @media screen and (max-width: 800px) {
