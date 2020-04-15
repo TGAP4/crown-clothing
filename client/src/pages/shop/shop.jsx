@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Route} from 'react-router-dom';
 
 import {connect} from 'react-redux';
@@ -12,11 +12,15 @@ import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
 
 
 const ShopPage = ({match, fetchCollectionsStart, isLoading}) => {
-  useEffect(() => {fetchCollectionsStart()}, [fetchCollectionsStart]);
+  const [preLoading, setPreLoading] = useState(true);
+  useEffect(() => {
+    fetchCollectionsStart();
+    setPreLoading(false);
+  }, [fetchCollectionsStart]);
 
   return (
     <>
-      {isLoading ?
+      {preLoading || isLoading ?
         <LoadingSpinner />
         : <div>
           <Route 

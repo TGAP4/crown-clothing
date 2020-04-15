@@ -4,6 +4,10 @@ export const SignIn = styled.div`
   width: 380px;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 800px) {
+    margin-bottom: 50px;
+  }
 `;
 
 export const Title = styled.h2`

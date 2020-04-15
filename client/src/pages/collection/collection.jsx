@@ -11,7 +11,7 @@ const Collection = ({collection}) => {
   const {title, items} = collection;
   return (  
     <S.Collection>
-        <S.Title>{title}</S.Title>
+      <S.Title>{title.toUpperCase()}</S.Title>
         <S.Items>
           {items.map(item => 
           <CollectionItem key={item.id} item={item} />

@@ -22,6 +22,7 @@ export const CollectionItem = styled.div`
   align-items: center;
   position: relative;
   padding: 0 10px;
+  margin-bottom: 30px;
 
   &:hover {
     ${Image} {
@@ -32,6 +33,28 @@ export const CollectionItem = styled.div`
       opacity: 0.85;
       display: initial;
     }
+  }
+  
+  @media screen and (max-width: 800px) {
+    width: 40vw;
+
+    &:hover {
+      ${Image} {
+        opacity: unset;
+      }
+
+      ${CustomButton} {
+        opacity: unset;
+      }
+    }
+
+    ${CustomButton} {
+      display: block;
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0 10px;
+    }
+  }
 `;
 
 export const CollectionFooter = styled.div`

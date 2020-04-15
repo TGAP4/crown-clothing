@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CheckoutItem = styled.div`
   width: 100%;
   display: flex;
+  justify-content: space-between;
   min-height: 100px;
   border-bottom: 1px solid darkgrey;
   padding: 15px 0;
@@ -34,10 +35,10 @@ export const Arrow = styled.div`
 `;
 
 export const QuantityValue = styled.span`
-      margin: 0 10px;
+  margin: 0 10px;
 `;
 
 export const RemoveButton = styled.div`
-    padding-left: 12px;
+    padding-right: 2vw;
     cursor: pointer;
 `;
