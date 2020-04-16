@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, lazy, Suspense} from 'react';
 import {Route} from 'react-router-dom';
 
 import {connect} from 'react-redux';
@@ -6,9 +6,10 @@ import {createStructuredSelector} from 'reselect';
 import {fetchCollectionsStart} from '../../redux/shop/shop-actions';
 import {selectIsCollectionFetching} from '../../redux/shop/shop-selectors';
 
-import CollectionsOverview from '../collections-overview/collections-overview';
-import Collection from '../collection/collection';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
+
+const CollectionsOverview = lazy(() => import('../collections-overview/collections-overview'));
+const Collection = lazy(() => import('../collection/collection'));
 
 
 const ShopPage = ({match, fetchCollectionsStart, isLoading}) => {
@@ -22,7 +23,7 @@ const ShopPage = ({match, fetchCollectionsStart, isLoading}) => {
     <>
       {preLoading || isLoading ?
         <LoadingSpinner />
-        : <div>
+        : <Suspense fallback={<LoadingSpinner />}>
           <Route 
             exact 
             path={`${match.path}`} 
@@ -32,7 +33,7 @@ const ShopPage = ({match, fetchCollectionsStart, isLoading}) => {
             path={`${match.path}/:collectionId`}
             component={Collection}
           />
-        </div>
+        </Suspense>
       }
     </>
   )
