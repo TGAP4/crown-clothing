@@ -38,11 +38,23 @@ export const createUserProfileDocument = (userAuth, ...rest) => {
     if (!snapShot.exists) {
       const {displayName, email} = userAuth;
       const createdAt = new Date();
-      userRef.set({displayName, email, createdAt});
+      const cart = [{}];
+      userRef.set({displayName, email, createdAt, cart});
       userRef.update(...rest);
     }
   })
   .catch(err => console.log('Error creating user:', err));
+  return userRef;
+}
+
+
+export const saveUserCart = (currentUser, cartItems) => {
+  if (!currentUser) return;
+
+  const userRef = firestore.doc(`users/${currentUser.id}`);
+  userRef.update({cart: cartItems})
+  .catch(err => console.log('Error saving user cart: ', err));
+  
   return userRef;
 }
 
@@ -80,7 +92,6 @@ export const convertCollectionsSnapshotToMap = collections => {
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({prompt: 'select_account'});
-// export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 
 export default firebase;

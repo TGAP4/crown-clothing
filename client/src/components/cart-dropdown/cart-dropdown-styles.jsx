@@ -28,5 +28,5 @@ export const EmptyMessage = styled.span`
 `;
 
 export const Button = styled.div`
-  margin-top: auto;
+  margin-top: 20px;
 `;

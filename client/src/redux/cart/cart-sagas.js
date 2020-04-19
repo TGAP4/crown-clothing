@@ -1,5 +1,5 @@
 import {all, call, takeLatest, put} from 'redux-saga/effects';
-import Types from '../cart/cart-types';
+import Types from '../user/user-types';
 import {clearCart} from './cart-actions';
 
 
@@ -8,7 +8,7 @@ function* clearCartOnSignout() {
 }
 
 function* onSignOutSuccess() {
-  yield takeLatest(Types.CLEAR_CART, clearCartOnSignout);
+  yield takeLatest(Types.SIGN_OUT_SUCCESS, clearCartOnSignout);
 }
 
 export default function* cartSagas() {

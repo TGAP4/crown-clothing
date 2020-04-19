@@ -11,7 +11,7 @@ import CartItem from '../cart-item/cart-item';
 import CustomButton from '../custom-button/custom-button';
 
 
-const CartDropdown = ({cartItems, history, dispatch}) => {
+const CartDropdown = ({cartItems, dispatch}) => {
   return (
     <S.CartDropdown>
       <S.CartItems>

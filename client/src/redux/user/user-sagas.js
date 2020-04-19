@@ -1,7 +1,8 @@
 import {takeLatest, put, all, call} from 'redux-saga/effects';
-import {auth, googleProvider, createUserProfileDocument, getCurrentUser} from '../../firebase/firebase-utils';
+import {auth, googleProvider, createUserProfileDocument, getCurrentUser, saveUserCart} from '../../firebase/firebase-utils';
 import Types from './user-types';
 import {signInSuccess, signInFailure, signOutSuccess, signOutFailure} from './user-actions';
+import {addPreviousUserCart} from '../cart/cart-actions';
 
 
 function* getSnapshotFromUserAuth(userAuth, ...rest) {
@@ -11,6 +12,7 @@ function* getSnapshotFromUserAuth(userAuth, ...rest) {
     yield put(signInSuccess(
       {id: userSnapshot.id, ...userSnapshot.data()}
     ));
+    yield put(addPreviousUserCart(userSnapshot.data().cart));
   } catch(error) {
     yield put(signInFailure(error));
   }
@@ -47,7 +49,8 @@ function* onEmailSignInStart() {
 };
 
 
-function* signUp({payload: {email, password, displayName}}) {
+function* signUp({payload, payload: {email, password, displayName}}) {
+  console.log(payload)
   try {
     const {user} = yield call(
       [auth, auth.createUserWithEmailAndPassword], email, password
@@ -78,8 +81,9 @@ function* onCheckUserSession() {
 }
 
 
-function* signOut() {
+function* signOut({payload: {currentUser, cartItems}}) {
   try {
+    yield call(saveUserCart, currentUser, cartItems);
     yield call([auth, auth.signOut]);
     yield put(signOutSuccess());
   } catch(error) {
