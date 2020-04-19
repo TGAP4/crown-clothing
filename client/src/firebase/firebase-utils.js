@@ -38,7 +38,7 @@ export const createUserProfileDocument = (userAuth, ...rest) => {
     if (!snapShot.exists) {
       const {displayName, email} = userAuth;
       const createdAt = new Date();
-      const cart = [{}];
+      const cart = [];
       userRef.set({displayName, email, createdAt, cart});
       userRef.update(...rest);
     }
