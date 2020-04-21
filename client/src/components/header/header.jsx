@@ -20,6 +20,9 @@ const Header = ({currentUser, hidden, signOutStart, cartItems}) => {
         <Logo />
       </S.LogoContainer>
       <S.Options>
+        <S.Option as={Link} to='/'>
+          HOME
+        </S.Option>
         <S.Option as={Link} to='/shop'>
           SHOP
         </S.Option>

@@ -13,6 +13,7 @@ import ErrorBoundary from './components/error-boundary/error-boundary';
 
 const Homepage = lazy(() => import('./pages/homepage/homepage'));
 const ShopPage = lazy(() => import('./pages/shop/shop'));
+const ContactPage = lazy(() => import('./pages/contact/contact-page'));
 const SignInSignUp = lazy(() => import('./pages/sign-in-sign-up/sign-in-sign-up'));
 const CheckoutPage = lazy(() => import('./pages/checkout/checkout'));
 
@@ -29,6 +30,7 @@ const App = ({checkUserSession, currentUser}) => {
         <Suspense fallback={<LoadingSpinner />}>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={ShopPage} />
+          <Route path='/contact' component={ContactPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
           <Route
             exact path='/signin'

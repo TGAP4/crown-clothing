@@ -48,3 +48,7 @@ app.post('/payment', (req, res) => {
     }
   });
 });
+
+app.post('/contact', (req, res) => {
+  res.status(200).send(req.body);
+});
