@@ -23,7 +23,7 @@ class ErrorBoundary extends React.Component {
       return (
         <S.ErrorImageOverlay>
           <S.ErrorImage imageUrl='https://i.imgur.com/Oqnene0.png' />
-          <S.ErrorText>I'm garbage that kills for money</S.ErrorText>
+          <S.ErrorText>Garbage Day...  Something went wrong :(</S.ErrorText>
         </S.ErrorImageOverlay>
       )
     }
