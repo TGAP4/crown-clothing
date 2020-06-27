@@ -3,7 +3,7 @@ import * as S from './menu-item-styles';
 
 import {withRouter, Link} from 'react-router-dom';
 
-const MenuItem = ({title, imageUrl, size, linkUrl, history, match}) => {
+const MenuItem = ({title, imageUrl, size, linkUrl, match}) => {
   return (
     <S.MenuItem 
       as={Link}

@@ -13,7 +13,7 @@ import CartIcon from '../cart-icon/cart-icon';
 import CartDropdown from '../cart-dropdown/cart-dropdown';
 
 
-const Header = ({currentUser, hidden, signOutStart, cartItems}) => {
+const Header = ({currentUser, hidden, signOutStart, cartItems, windowPosition}) => {
   return (
     <S.Header>
       <S.LogoContainer as={Link} to='/'>
@@ -38,7 +38,7 @@ const Header = ({currentUser, hidden, signOutStart, cartItems}) => {
         }
         <CartIcon />
       </S.Options>
-      {hidden ? null : <CartDropdown />}
+      {hidden ? null : <CartDropdown windowPosition={windowPosition} />}
     </S.Header>
   )
 }

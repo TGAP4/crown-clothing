@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+const scrollingPosition = ({windowPosition}) => {
+  if (windowPosition > 60) {
+    return 'position: fixed; top: 30px;'
+  }
+}
+
 export const CartDropdown = styled.div`
   position: absolute;
   width: 240px;
@@ -13,6 +19,16 @@ export const CartDropdown = styled.div`
   top: 90px;
   right: 55px;
   z-index: 5;
+  ${scrollingPosition}
+`;
+
+export const XButton = styled.div`
+  font-size: 16px;
+  color: gray;
+  position: absolute;
+  top: 0;
+  right: 7px;
+  cursor: pointer;
 `;
 
 export const CartItems = styled.div`

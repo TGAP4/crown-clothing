@@ -11,9 +11,10 @@ import CartItem from '../cart-item/cart-item';
 import CustomButton from '../custom-button/custom-button';
 
 
-const CartDropdown = ({cartItems, dispatch}) => {
+const CartDropdown = ({windowPosition, cartItems, toggleCartHidden}) => {
   return (
-    <S.CartDropdown>
+    <S.CartDropdown windowPosition={windowPosition}>
+      <S.XButton onClick={toggleCartHidden}>x</S.XButton>
       <S.CartItems>
         {cartItems.length ?
           cartItems.map(cartItem => 
@@ -23,7 +24,7 @@ const CartDropdown = ({cartItems, dispatch}) => {
         }
       </S.CartItems>
       <Link to={'/checkout'}>
-        <S.Button as={CustomButton} onClick={() => dispatch(toggleCartHidden())}>
+        <S.Button as={CustomButton} onClick={toggleCartHidden}>
             GO TO CHECKOUT
         </S.Button>
       </Link>
@@ -35,4 +36,8 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems
 });
 
-export default withRouter(connect(mapStateToProps)(CartDropdown));
+const mapDispatchToProps = dispatch => ({
+  toggleCartHidden: () => dispatch(toggleCartHidden())
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CartDropdown));

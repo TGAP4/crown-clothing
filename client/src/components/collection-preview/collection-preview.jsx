@@ -5,7 +5,7 @@ import {withRouter, Link} from 'react-router-dom';
 
 import CollectionItem from '../collection-item/collection-item';
 
-const CollectionPreview = ({title, items, history, match}) => {
+const CollectionPreview = ({title, items, match}) => {
   return (
     <S.CollectionPreview>
       <S.Title 
