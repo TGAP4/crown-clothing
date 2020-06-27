@@ -1,4 +1,4 @@
-import React, {useState, useEffect, lazy, Suspense} from 'react';
+import React, {useEffect, lazy, Suspense} from 'react';
 import {GlobalStyle} from './global-style';
 import {Switch, Route, Redirect} from 'react-router-dom';
 
@@ -19,17 +19,12 @@ const CheckoutPage = lazy(() => import('./pages/checkout/checkout'));
 
 
 const App = ({checkUserSession, currentUser}) => {
-  const [windowPosition, setWindowPosition] = useState(window.pageYOffset);
-  window.onscroll = () => {
-    setWindowPosition(window.pageYOffset);
-  }
-
   useEffect(() => {checkUserSession()}, [checkUserSession]);
 
   return (
   <div>
     <GlobalStyle />
-    <Header windowPosition={windowPosition} />
+    <Header />
     <Switch>
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>

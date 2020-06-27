@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as S from './header-styles';
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 import {Link} from 'react-router-dom';
@@ -13,7 +13,12 @@ import CartIcon from '../cart-icon/cart-icon';
 import CartDropdown from '../cart-dropdown/cart-dropdown';
 
 
-const Header = ({currentUser, hidden, signOutStart, cartItems, windowPosition}) => {
+const Header = ({currentUser, hidden, signOutStart, cartItems}) => {
+  const [windowPosition, setWindowPosition] = useState(window.pageYOffset);
+  window.onscroll = () => {
+    setWindowPosition(window.pageYOffset);
+  }
+
   return (
     <S.Header>
       <S.LogoContainer as={Link} to='/'>
