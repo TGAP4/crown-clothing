@@ -1,12 +1,26 @@
 name: learn-github-actions
 on: [push]
 jobs:
-  test:
+  client:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: |
+          cd client
+          npm install
+      - run: npm run client
+  server:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - run: npm install
+      - run: npm run server
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v2
         # env:
@@ -14,8 +28,8 @@ jobs:
         #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          build: npm run client && curl http://localhost:3000
-          start: npm run server && curl http://localhost:5000
+          # build: npm run client && curl http://localhost:3000
+          # start: npm run server && curl http://localhost:5000
           wait-on: "http://localhost:3000"
           # record: true
           spec: cypress/integration/test.spec.js
