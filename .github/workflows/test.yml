@@ -32,5 +32,6 @@ jobs:
           # build: npm run client && curl http://localhost:3000
           # start: npm run server && curl http://localhost:5000
           wait-on: "http://localhost:3000"
+          wait-on-timeout: 600
           # record: true
           spec: cypress/integration/test.spec.js
