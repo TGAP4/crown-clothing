@@ -14,7 +14,7 @@ jobs:
         #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          build: npm run build
+          build: npm run client
           start: npm run server
           wait-on: "http://localhost:3000"
           # record: true
