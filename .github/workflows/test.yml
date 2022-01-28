@@ -14,8 +14,8 @@ jobs:
         #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          build: npm run client
-          start: npm run server
+          build: npm run client && curl http://localhost:3000
+          start: npm run server && curl http://localhost:5000
           wait-on: "http://localhost:3000"
           # record: true
           spec: cypress/integration/test.spec.js
